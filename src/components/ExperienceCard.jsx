@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function ExperienceCard({ item }) {
+  
   return (
     <div className="bg-zinc-950/40 border border-zinc-900 rounded-2xl p-6 md:p-8 hover:border-zinc-800 transition-all duration-500 shadow-xl flex flex-col justify-between h-full group">
       <div className="space-y-4">

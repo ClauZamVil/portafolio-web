@@ -1,45 +1,62 @@
 import React from 'react';
-import Terminal from '../components/Terminal';
+import { portfolioData } from '../data/portfolioData';
+import Metrics from '../components/Metrics';
 
 export default function Home() {
+  const { profile } = portfolioData;
+
   return (
-    <div className="w-full max-w-5xl mx-auto py-8 px-4 flex flex-col justify-between min-h-[70vh]">
+    <div className="py-12 w-full max-w-5xl mx-auto space-y-16 min-h-screen flex flex-col justify-center anonymity animate-fade-in">
       
-      {/* BLOQUE SUPERIOR: DATOS Y AVATAR */}
-      <div className="flex flex-col md:flex-row items-center justify-between gap-10 w-full">
-        
-        {/* TEXTOS (Nombre y Descripción profesional) */}
-        <div className="text-center md:text-left space-y-6 max-w-2xl order-2 md:order-1">
-          <h1 className="text-7xl md:text-8xl font-black tracking-tighter text-white select-none hover:text-cyan-400 transition-colors duration-300">
-            clauzamvil
+      {/* 1. SECCIÓN PRINCIPAL: PRESENTACIÓN + AVATAR */}
+      <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+        <div className="flex-1 space-y-4 text-left">
+          <h1 className="text-6xl md:text-7xl font-black text-cyan-400/90 tracking-tight font-sans">
+            {profile?.username || "clauzamvil"}
           </h1>
-          <div className="space-y-4">
-            <p className="text-xl md:text-2xl text-zinc-200 font-bold tracking-wide">
-              Hi, my name is Claudia. 👩‍💻 | 👨‍🏫 | 📊
-            </p>
-            <p className="text-base md:text-lg text-zinc-400 leading-relaxed font-normal">
-              Analista en Programación Computacional & Gestor Socioeducativo. 
-              Construyendo software con lógica humana e impacto real.
-            </p>
-          </div>
+          <h2 className="text-xl md:text-2xl font-bold text-zinc-300">
+            Hi, my name is Claudia. 👩‍💻 | 👨‍🏫 | 📊
+          </h2>
+          <p className="text-lg text-zinc-400 leading-relaxed max-w-2xl font-normal">
+            Analista en Programación Computacional & Gestor Socioeducativo. 
+            Construyendo software con lógica humana e impacto real.
+          </p>
         </div>
 
-        {/* AVATAR (Foto circular a la derecha) */}
-        <div className="order-1 md:order-2 shrink-0">
-          <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-2 border-zinc-800 shadow-2xl transition-transform duration-500 hover:rotate-6">
-            <img 
-              src="https://via.placeholder.com/150" 
-              alt="Claudia avatar" 
-              className="w-full h-full object-cover"
-            />
+        {/* Círculo decorativo de avatar */}
+        <div className="relative shrink-0">
+          <div className="w-40 h-40 md:w-52 md:h-52 rounded-full border border-zinc-800 shadow-xl bg-zinc-950/40 flex items-center justify-center backdrop-blur-sm">
+            <span className="text-4xl">🚀</span>
           </div>
         </div>
-
       </div>
 
-      {/* BLOQUE INFERIOR: LA CONSOLA HORIZONTAL */}
-      <div className="w-full order-3">
-        <Terminal />
+      {/* 2. TU TERMINAL ORIGINAL (Restaurada e impecable) */}
+      <div className="w-full max-w-3xl mx-auto bg-zinc-950/80 border border-zinc-900 rounded-2xl shadow-2xl overflow-hidden font-mono text-sm text-left">
+        {/* Barra superior de la consola */}
+        <div className="bg-zinc-950 px-5 py-3 flex items-center justify-between border-b border-zinc-900/50">
+          <div className="flex space-x-2">
+            <span className="w-3 h-3 rounded-full bg-red-500/70"></span>
+            <span className="w-3 h-3 rounded-full bg-yellow-500/70"></span>
+            <span className="w-3 h-3 rounded-full bg-green-500/70"></span>
+          </div>
+          <span className="text-xs text-zinc-600 tracking-wider uppercase font-semibold">user@clauzamvil:~</span>
+        </div>
+        
+        {/* Contenido de la consola */}
+        <div className="p-6 space-y-2 text-zinc-300 leading-relaxed bg-zinc-950/40 font-mono text-xs md:text-sm">
+          <p className="text-emerald-400">user@clauzamvil:~$ ./start_portfolio.sh</p>
+          <p className="text-zinc-400">&gt; initializing_core_modules... <span className="text-emerald-400 font-bold">[OK]</span></p>
+          <p className="text-zinc-400">&gt; connecting_to_database... <span className="text-emerald-400 font-bold">[OK]</span></p>
+          <p className="text-emerald-400/90 font-semibold">&gt; system_status: ONLINE & SECURE</p>
+          {/* Cursor parpadeante estilo terminal */}
+          <div className="inline-block w-2 h-4 bg-emerald-400 animate-pulse ml-1 align-middle"></div>
+        </div>
+      </div>
+
+      {/* 3. NUEVO BANNER DE MÉTRICAS (Ubicado abajo como base de impacto) */}
+      <div className="pt-4">
+        <Metrics />
       </div>
 
     </div>

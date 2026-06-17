@@ -1,28 +1,44 @@
 import React from 'react';
 import { portfolioData } from '../data/portfolioData';
+import Skills from '../components/Skills';
 
 export default function About() {
   const { profile } = portfolioData;
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 items-center py-8">
-      <div className="lg:col-span-2 space-y-8">
-        <h2 className="text-5xl md:text-6xl font-black tracking-tight text-white">About me</h2>
-        <p className="text-lg md:text-xl text-zinc-200 font-normal leading-relaxed">
-          {profile.aboutDetailed}
-        </p>
-        <div className="border-l-2 border-zinc-800 pl-6 space-y-3">
-          <h4 className="text-sm font-mono uppercase tracking-widest text-zinc-500 font-bold">// background</h4>
-          <p className="text-base text-zinc-400 leading-relaxed">
-            {profile.backgroundDetailed}
+    <div className="py-8 w-full max-w-5xl mx-auto space-y-12 animate-fade-in">
+      
+      {/* SECCIÓN PRINCIPAL: TEXTO + FOTO */}
+      <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12 pt-4">
+        <div className="flex-1 space-y-4 text-left">
+          <h1 className="text-5xl md:text-6xl font-black text-white tracking-tight">
+            About <span className="text-cyan-400">Me</span>
+          </h1>
+          <h2 className="text-xl font-bold text-zinc-300">
+            {profile?.tagline || "Hi, my name is Claudia. 👩‍💻 | 👨‍🏫 | 📊"}
+          </h2>
+          <p className="text-base md:text-lg text-zinc-400 leading-relaxed">
+            {profile?.bio || "Analista en Programación Computacional & Gestor Socioeducativo. Construyendo software con lógica humana e impacto real."}
+          </p>
+          <p className="text-sm md:text-base text-zinc-500 leading-relaxed">
+            {profile?.aboutDetailed || "Soy una apasionada por conectar la rigurosidad del código técnico con la empatía y gestión necesarias en entornos socioeducativos. Mi misión es usar la tecnología como un puente transformador."}
           </p>
         </div>
-      </div>
-      <div className="lg:col-span-1 w-full max-w-xs mx-auto">
-        <div className="aspect-[3/4] w-full rounded-2xl overflow-hidden border-2 border-zinc-800 bg-zinc-950 shadow-2xl transition-all duration-500 hover:border-zinc-600">
-          <img src={profile.fullBodyUrl} alt="Professional Profile" className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500" />
+
+        <div className="relative shrink-0">
+          <div className="w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-950 flex items-center justify-center">
+            <img 
+              src={profile?.avatarUrl || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&h=300&fit=crop"} 
+              alt="Claudia Avatar" 
+              className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500"
+            />
+          </div>
         </div>
       </div>
+
+      {/* SECCIÓN DE SKILLS (Ahora respira mucho mejor aquí sola) */}
+      <Skills />
+
     </div>
   );
 }

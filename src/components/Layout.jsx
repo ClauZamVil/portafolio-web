@@ -15,15 +15,15 @@ export default function Layout() {
           <NavLink to="/" className={({ isActive }) => isActive ? "text-white border-b-2 border-cyan-500 pb-1" : "text-zinc-500 hover:text-white transition-colors duration-300"}>
             Home
           </NavLink>
+          <NavLink to="/about" className={({ isActive }) => isActive ? "text-white border-b-2 border-cyan-500 pb-1" : "text-zinc-500 hover:text-white transition-colors duration-300"}>
+            About
+          </NavLink>
           <NavLink to="/projects" className={({ isActive }) => isActive ? "text-white border-b-2 border-cyan-500 pb-1" : "text-zinc-500 hover:text-white transition-colors duration-300"}>
             Projects
           </NavLink>
           {/* NUEVO ENLACE ADOCENADO AL RECLUTADOR TECNOLÓGICO */}
           <NavLink to="/leadership" className={({ isActive }) => isActive ? "text-white border-b-2 border-cyan-500 pb-1" : "text-zinc-500 hover:text-white transition-colors duration-300"}>
             Leadership
-          </NavLink>
-          <NavLink to="/about" className={({ isActive }) => isActive ? "text-white border-b-2 border-cyan-500 pb-1" : "text-zinc-500 hover:text-white transition-colors duration-300"}>
-            About
           </NavLink>
           <NavLink to="/contact" className={({ isActive }) => isActive ? "text-white border-b-2 border-cyan-500 pb-1" : "text-zinc-500 hover:text-white transition-colors duration-300"}>
             Contact
